@@ -98,7 +98,7 @@ namespace ManageWorks
             }
             if (C_FileString.CheckString(TBname.Text) == false)
             {
-                C_MessageBox.Error("名前に使用できない文字が含まれています。");
+                C_MessageBox.Error("名前に使用できない文字が含まれています。\n使用できない文字：半角空白、&、*、?、;、:、`、'、\\、/、\\、|、~、$、<、>、(、)、[、]、{、}");
                 return false;
             }
             // 作成者名
@@ -109,7 +109,7 @@ namespace ManageWorks
             }
             if (C_FileString.CheckString(TBcreator.Text) == false)
             {
-                C_MessageBox.Error("作成者名に使用できない文字が含まれています。");
+                C_MessageBox.Error("作成者名に使用できない文字が含まれています。\n使用できない文字：半角空白、&、*、?、;、:、`、'、\\、/、\\、|、~、$、<、>、(、)、[、]、{、}");
                 return false;
             }
             // 既存データ重複

@@ -273,7 +273,7 @@
             VersionText.Name = "VersionText";
             VersionText.Size = new Size(78, 25);
             VersionText.TabIndex = 17;
-            VersionText.Text = "Ver.0.6.3";
+            VersionText.Text = "Ver.1.0.0";
             // 
             // FormMain
             // 
