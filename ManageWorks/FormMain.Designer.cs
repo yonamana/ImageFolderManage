@@ -295,7 +295,7 @@
             Controls.Add(InsertBtn);
             Controls.Add(button1);
             Name = "FormMain";
-            Text = "メイン";
+            Text = "ImageFolderManage";
             Activated += FormFocusActive;
             Load += FormMain_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
