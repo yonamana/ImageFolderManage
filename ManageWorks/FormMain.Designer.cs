@@ -188,7 +188,7 @@
             ConditionsBtn.Name = "ConditionsBtn";
             ConditionsBtn.Size = new Size(112, 34);
             ConditionsBtn.TabIndex = 10;
-            ConditionsBtn.Text = "条件";
+            ConditionsBtn.Text = "検索";
             ConditionsBtn.UseVisualStyleBackColor = true;
             ConditionsBtn.Click += ConditionsBtn_Click;
             // 
@@ -273,7 +273,7 @@
             VersionText.Name = "VersionText";
             VersionText.Size = new Size(78, 25);
             VersionText.TabIndex = 17;
-            VersionText.Text = "Ver.1.0.0";
+            VersionText.Text = "Ver.1.0.1";
             // 
             // FormMain
             // 
