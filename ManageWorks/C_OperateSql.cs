@@ -110,7 +110,7 @@ namespace ManageWorks
         /// <param name="columns"></param>
         /// <param name="where"></param>
         /// <returns></returns>
-        public Dictionary<int, Dictionary<string, string>> Select(string tableName, string[] columns, string where = "")
+        public Dictionary<int, Dictionary<string, string>> Select(string tableName, string[] columns, string where = "", string other = "")
         {
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = dbKey;
@@ -146,6 +146,11 @@ namespace ManageWorks
                 str += " WHERE " + where;
             }
 
+            if (other != "")
+            {
+                str += " " + other;
+            }
+
 
             // 実行
             cmd.CommandText = str;
@@ -166,6 +171,10 @@ namespace ManageWorks
                     {
                         checkColumn = column.Remove(0, 9);
                     }
+                    else if (column.IndexOf(".") > 0)
+                    {
+                        checkColumn = column.Remove(0, (column.IndexOf(".") + 1));
+                    }
                     else
                     {
                         checkColumn = column;
@@ -181,7 +190,6 @@ namespace ManageWorks
 
             return resultList;
         }
-
 
     }
 }

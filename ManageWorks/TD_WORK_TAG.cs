@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -88,7 +89,7 @@ namespace ManageWorks
             {
                 if (where != "")
                 {
-                    where += " AND ";
+                    where += " OR ";
                 }
                 where += "tag_id = " + item;
             }
@@ -105,6 +106,30 @@ namespace ManageWorks
             return workIdList;
         }
 
+
+        static public string[] SelectWorkIdWhereTagId(string[] tagId)
+        {
+            C_OperateSql sql = new C_OperateSql();
+            string[] columns = { "WORK.id" };
+            string other = "";
+            int tableCnt = 1;
+            foreach (string item in tagId)
+            {
+                other += " INNER JOIN WORK_TAG AS WT" + tableCnt + " ON WORK.id = WT" + tableCnt + ".work_id AND WT" + tableCnt + ".tag_id = " + item;
+                tableCnt++;
+            }
+            Dictionary<int, Dictionary<string, string>> result = sql.Select("WORK", columns, "", other);
+
+            // 結果を配列にして返却
+            string[] workIdList = new string[result.Count];
+            for (int count = 0; count < result.Count; count++)
+            {
+                Dictionary<string, string> data = result[count];
+                workIdList[count] = data["id"];
+            }
+
+            return workIdList;
+        }
 
 
 

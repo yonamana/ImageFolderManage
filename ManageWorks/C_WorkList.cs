@@ -276,11 +276,6 @@ namespace ManageWorks
             }
             if (searchTag.Length > 0)
             {
-                if (where != "")
-                {
-                    where += " AND ";
-                }
-
                 // SQL: SELECT（タグのid検索）
                 string tagSelectWhere = "";
                 foreach (string item in searchTag)
@@ -302,19 +297,44 @@ namespace ManageWorks
                 }
 
                 // tag_idを元にwork_idを取得
-                string[] workIdList = C_LinkWorkTag.GetWorkId(tagIdList);
-                string addWhere = "";
-                foreach (string item in workIdList)
+                string[] workIdList = TD_WORK_TAG.SelectWorkIdWhereTagId(tagIdList);
+
+                // WHERE文を作成
+                if (workIdList.Count() > 0)
                 {
-                    if (addWhere != "")
+                    string addWhere = "";
+                    if (where != "")
                     {
-                        addWhere += " OR ";
+                        where += "AND (";
                     }
-                    addWhere += "id = " + item;
+                    else
+                    {
+                        where += "(";
+                    }
+                    bool flagAddWhere = false;
+                    foreach (string item in workIdList)
+                    {
+                        if (flagAddWhere == true)
+                        {
+                            addWhere += " OR ";
+                        }
+                        addWhere += "id = " + item;
+                        flagAddWhere = true;
+                    }
+                    addWhere += ")";
+                    where += addWhere;
                 }
-                where += addWhere;
+                else
+                {
+                    // 他の検索条件が指定されているが、タグが一致するものがすでにない
+                    if (where != "")
+                    {
+                        return Array.Empty<CD_ListRowData>();
+                    }
+                }
             }
 
+            // タグが指定されているのに検索条件がない
             if (searchTag.Count() > 0 && where == "")
             {
                 return Array.Empty<CD_ListRowData>();
