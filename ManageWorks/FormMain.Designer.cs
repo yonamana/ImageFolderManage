@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             button1 = new Button();
             InsertBtn = new Button();
             pictureBox1 = new PictureBox();
@@ -131,9 +131,9 @@
             // 
             // id
             // 
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            id.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            id.DefaultCellStyle = dataGridViewCellStyle2;
             id.HeaderText = "ID";
             id.MinimumWidth = 8;
             id.Name = "id";
@@ -273,7 +273,8 @@
             VersionText.Name = "VersionText";
             VersionText.Size = new Size(78, 25);
             VersionText.TabIndex = 17;
-            VersionText.Text = "Ver.1.0.2";
+            VersionText.Text = "Ver.1.0.3";
+            VersionText.Click += VersionText_Click;
             // 
             // FormMain
             // 

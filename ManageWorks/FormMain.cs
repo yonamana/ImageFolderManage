@@ -260,5 +260,10 @@ namespace ManageWorks
             dataGridView1.Focus();
             return;
         }
+
+        private void VersionText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
